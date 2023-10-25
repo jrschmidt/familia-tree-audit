@@ -1,0 +1,22 @@
+{
+  "name": "familia-tree-audit",
+  "version": "1.0.0",
+  "description": "Check integrity of family tree files and compatibility with Familia apps.",
+  "main": "audit-tree.js",
+  "scripts": {
+    "test": "vitest"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jrschmidt/familia-tree-audit.git"
+  },
+  "author": "JR Schmidt",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/jrschmidt/familia-tree-audit/issues"
+  },
+  "homepage": "https://github.com/jrschmidt/familia-tree-audit#readme",
+  "devDependencies": {
+    "vitest": "^0.34.6"
+  }
+}
