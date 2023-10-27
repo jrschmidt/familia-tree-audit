@@ -5,6 +5,7 @@ import { testFile0 } from './test-data/testFile0'
 
 import { testFileBad1 } from './test-data/testFileBad1'
 import { testFileBad2 } from './test-data/testFileBad2'
+import { testFileBad3 } from './test-data/testFileBad3'
 
 test('family tree file is in the proper general format', () => {
   let result = {}
@@ -28,4 +29,16 @@ test('family tree file contains a root person', () => {
   result = auditTree(testFileBad2)
   expect(result.filePassesAudit).toEqual(false)
   expect(result.fileHasRootPerson).toEqual(false)
+})
+
+test('family tree file contains a `people` property', () => {
+  let result = {}
+
+  result = auditTree(testFile0)
+  expect(result.filePassesAudit).toEqual(true)
+  expect(result.fileHasPeopleList).toEqual(true)
+  
+  result = auditTree(testFileBad3)
+  expect(result.filePassesAudit).toEqual(false)
+  expect(result.fileHasPeopleList).toEqual(false)
 })
