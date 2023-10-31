@@ -1,10 +1,13 @@
-export const auditTree = (testFile) => {
+export const auditTreeFile = (testFile) => {
   let filePassesAudit = true
   let fileHasCorrectFormat = true
   let fileHasRootPerson = true
-  let fileHasPeopleList= true
+  let fileHasPeopleList = true
+  let rootHasNoChildLink = true
+  let rootHasNoSpouseLink = true
 
   const keys = Object.keys(testFile)
+  let rootPerson = ''
   
   if ( typeof testFile.rootPerson != 'string' )
   {
@@ -18,12 +21,28 @@ export const auditTree = (testFile) => {
   if ( keys.includes('people') === false ) {
     fileHasPeopleList = false
   }
+  
+  if ( fileHasRootPerson && fileHasPeopleList) {
+    rootPerson = testFile.people[testFile.rootPerson]
+  }
 
+  if ( rootPerson.childId != null )
+  {
+    rootHasNoChildLink = false
+  }
+  
+  if ( rootPerson.spouseId != null )
+  {
+    rootHasNoSpouseLink = false
+  }
+  
   if (
     [
       fileHasCorrectFormat,
       fileHasRootPerson,
-      fileHasPeopleList
+      fileHasPeopleList,
+      rootHasNoChildLink,
+      rootHasNoSpouseLink
     ]
       .includes(false)) filePassesAudit = false
 
@@ -31,6 +50,8 @@ export const auditTree = (testFile) => {
     filePassesAudit: filePassesAudit,
     fileHasCorrectFormat: fileHasCorrectFormat,
     fileHasRootPerson: fileHasRootPerson,
-    fileHasPeopleList
+    fileHasPeopleList: fileHasPeopleList,
+    rootHasNoChildLink: rootHasNoChildLink,
+    rootHasNoSpouseLink: rootHasNoSpouseLink
   }
 }
