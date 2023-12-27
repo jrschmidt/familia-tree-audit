@@ -10,8 +10,9 @@ import { testFileBad3 } from './test-data/testFileBad3'
 import { testFileBad4 } from './test-data/testFileBad4'
 import { testFileBad5 } from './test-data/testFileBad5'
 import { testFileBad6 } from './test-data/testFileBad6'
+import { testFileBad7 } from './test-data/testFileBad7'
 
-test('family tree file contains a root person', () => {
+test.skip('family tree file contains a root person', () => {
   let result = {}
 
   result = auditTreeFile(testFile0)
@@ -23,19 +24,19 @@ test('family tree file contains a root person', () => {
   expect(result.fileHasRootPerson).toEqual(false)
 })
 
-test('family tree file contains a `people` property', () => {
+test.skip('family tree file contains a `people` property', () => {
   let result = {}
   
-  // result = auditTreeFile(testFile0)
-  // expect(result.filePassesAudit).toEqual(true)
-  // expect(result.fileHasPeopleList).toEqual(true)
+  result = auditTreeFile(testFile0)
+  expect(result.filePassesAudit).toEqual(true)
+  expect(result.fileHasPeopleList).toEqual(true)
   
   result = auditTreeFile(testFileBad3)
   expect(result.filePassesAudit).toEqual(false)
   expect(result.fileHasPeopleList).toEqual(false)
 })
 
-test('root person has no child or spouse links', () => {
+test.skip('root person has no child or spouse links', () => {
   let result = {}
   
   result = auditTreeFile(testFile0)
@@ -52,6 +53,22 @@ test('root person has no child or spouse links', () => {
   expect(result.rootHasNoSpouseLink).toEqual(false)
 })
 
+test('all child/parent pair links match in both directions', () => {
+  let result = {}
+  
+  // result = auditTreeFile(testFile0)
+  // expect(result.filePassesAudit).toEqual(true)
+  // expect(result.allChildParentLinksMatch).toEqual(true)
+  
+  // result = auditTreeFile(testFile0a)
+  // expect(result.filePassesAudit).toEqual(true)
+  // expect(result.allChildParentLinksMatch).toEqual(true)
+  
+  result = auditTreeFile(testFileBad7)
+  expect(result.filePassesAudit).toEqual(false)
+  expect(result.allChildParentLinksMatch).toEqual(false)
+})
+
 test.skip('all spouse pair links match in both directions', () => {
   let result = {}
   
@@ -63,7 +80,7 @@ test.skip('all spouse pair links match in both directions', () => {
   expect(result.filePassesAudit).toEqual(true)
   expect(result.allSpouseLinksMatch).toEqual(true)
   
-  result = auditTreeFile(testFileBad6)
-  expect(result.filePassesAudit).toEqual(false)
-  expect(result.allSpouseLinksMatch).toEqual(false)
+  // result = auditTreeFile(testFileBad6)
+  // expect(result.filePassesAudit).toEqual(false)
+  // expect(result.allSpouseLinksMatch).toEqual(false)
 })

@@ -1,11 +1,11 @@
 // #####  FAMILY TREE TEST FILES TO TEST FILE AUDITING FUNCTION.  ##### //
 
-// #####  FILE: testFileBad6.js  ##### //
-// #####  A copy of testFile0a.js with a non-matching pair of spouse links. ##### //
-// #####  (p0018 shows p0019 as spouse, but p0019 has p0003 for its spouse link.) ##### //
+// #####  FILE: testFileBad7.js  ##### //
+// #####  A copy of testFile0a.js with a non-matching pair of child/parent links. ##### //
+// #####  (p0002 shows p0003 as father, but p0003 has p0088 for its child link.) ##### //
 
 
-export const testFileBad6 = {
+export const testFileBad7 = {
 
   rootPerson: 'p0001',
 
@@ -46,10 +46,10 @@ export const testFileBad6 = {
         generation: 2,
         birthdate: '21-nov-1908',
         deathdate: '1985',
-        fatherId: null,
-        motherId: null,
+        fatherId: 'p0005',
+        motherId: 'p0006',
         spouseId: 'p0004',
-        childId: 'p0002'
+        childId: 'p0088'
       },
 
     p0004:
@@ -60,8 +60,8 @@ export const testFileBad6 = {
         generation: 2,
         birthdate: '27-sep-1911',
         deathdate: '1991',
-        fatherId: null,
-        motherId: null,
+        fatherId: 'p0007',
+        motherId: 'p0008',
         spouseId: 'p0003',
         childId: 'p0002'
       },
@@ -89,8 +89,8 @@ export const testFileBad6 = {
         generation: 2,
         birthdate: '14-may-1897',
         deathdate: '1982',
-        fatherId: null,
-        motherId: null,
+        fatherId: 'p0020',
+        motherId: 'p0021',
         spouseId: 'p0019',
         childId: 'p0017'
       },
@@ -103,9 +103,9 @@ export const testFileBad6 = {
         generation: 2,
         birthdate: '18-apr-1900',
         deathdate: '1989',
-        fatherId: null,
-        motherId: null,
-        spouseId: 'p0003',
+        fatherId: 'p0022',
+        motherId: 'p0023',
+        spouseId: 'p0018',
         childId: 'p0017'
       }
 
